@@ -1,0 +1,47 @@
+{
+    "name": "maidraw-kamai-tachi-adapter",
+    "version": "0.0.0",
+    "description": "A maidraw adapter for maimai.lxns.net",
+    "homepage": "https://github.com/saltcute/maidraw-kamai-tachi-adapter#readme",
+    "bugs": {
+        "url": "https://github.com/saltcute/maidraw-kamai-tachi-adapter/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/saltcute/maidraw-kamai-tachi-adapter.git"
+    },
+    "license": "MIT",
+    "author": "saltcute",
+    "type": "commonjs",
+    "exports": {
+        "./maimai": "./dist/maimai.js",
+        "./chunithm": "./dist/chunithm.js",
+        "./ongeki": "./dist/ongeki.js"
+    },
+    "files": [
+        "dist/"
+    ],
+    "scripts": {
+        "build": "tsc && tsc-alias",
+        "clean": "rimraf dist/*",
+        "format": "biome format --write",
+        "lint": "biome lint --write",
+        "make": "npm run clean && npm run format && npm run lint && npm run build"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.0",
+        "@types/node": "^25.9.4",
+        "rimraf": "^6.1.3",
+        "tsc-alias": "^1.8.17",
+        "typescript": "^6.0.3"
+    },
+    "peerDependencies": {
+        "maidraw": "^0.13.2"
+    },
+    "dependencies": {
+        "camelcase-keys": "^10.0.2",
+        "gcm-database": "^1.0.3",
+        "gcm-database-local": "^1.0.12",
+        "rg-stats": "^1.2.1"
+    }
+}
