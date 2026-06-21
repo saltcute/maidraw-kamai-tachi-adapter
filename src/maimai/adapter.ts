@@ -55,7 +55,7 @@ export class KamaiTachiScoreAdapter
     private currentRegion: Region;
     constructor({
         database,
-        baseUrl = "https://kamai.tachi.ac/",
+        baseUrl = "https://kamai.tachi.ac",
         version = Versions.PRISM_PLUS,
         region = "DX",
     }: {

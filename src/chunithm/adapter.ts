@@ -45,7 +45,7 @@ export class KamaiTachiScoreAdapter
     private readonly currentVersion: GameVersions;
     constructor({
         database,
-        baseUrl = "https://kamai.tachi.ac/",
+        baseUrl = "https://kamai.tachi.ac",
         currentVersion = GameVersions.CHUNITHM_VERSE,
     }: {
         database: Database;
