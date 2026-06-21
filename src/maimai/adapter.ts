@@ -8,8 +8,8 @@ import { BaseScoreAdapter, FailedToFetchError } from "maidraw";
 import {
     AchievementTypes,
     ComboLamp,
+    type Score as MaidrawScore,
     type MaimaiScoreAdapter,
-    type Score as MaiScore,
     SyncLamp,
 } from "maidraw/maimai";
 import { MaimaiDXRate } from "rg-stats";
@@ -29,6 +29,14 @@ import type { Song } from "./types/song";
 import { compareGameVersions, getGameVersion } from "./types/version";
 
 type Region = "DX" | "EX" | "CN";
+
+interface MaiScore extends MaidrawScore {
+    optionalData: {
+        kt?: {
+            chartId: string;
+        };
+    } & MaidrawScore["optionalData"];
+}
 
 interface EnrichedPb {
     pb: Pb;
@@ -218,7 +226,11 @@ export class KamaiTachiScoreAdapter
             achievementRank: this.getAchievementRank(score.scoreData.grade),
             dxRating,
             dxScore,
-            optionalData: {},
+            optionalData: {
+                kt: {
+                    chartId: chart.chartId,
+                },
+            },
         };
     }
     private getAchievementRank(grade: string): AchievementTypes {
