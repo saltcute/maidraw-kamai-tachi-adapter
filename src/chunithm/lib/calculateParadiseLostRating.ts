@@ -1,4 +1,4 @@
-import { truncateNumber } from "../../common/util";
+import { truncateNumber } from "@common/util";
 
 /**
  * Calculate the CHUNITHM PARADISE / PARADISE LOST era rating of a score.

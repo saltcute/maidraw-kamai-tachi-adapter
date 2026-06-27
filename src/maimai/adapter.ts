@@ -1,3 +1,5 @@
+import type { ApiResponse } from "@common/response";
+import { camelizeResponse, sanitizeKamaitachiErrorMessage } from "@common/util";
 import { Difficulty, Type } from "gcm-database/maimai";
 import type {
     Database,
@@ -13,11 +15,6 @@ import {
     SyncLamp,
 } from "maidraw/maimai";
 import { MaimaiDXRate } from "rg-stats";
-import type { ApiResponse } from "../common/response";
-import {
-    camelizeResponse,
-    sanitizeKamaitachiErrorMessage,
-} from "../common/util";
 import { KamaiTachiBuilder } from "./builder";
 import type { Chart } from "./types/chart";
 import {
@@ -218,8 +215,9 @@ export class KamaiTachiScoreAdapter
             else return -1;
         })();
         return {
-            chart:
-                localChart ?? this.synthesizeChart(chart, song, internalLevel),
+            chart: localChart
+                ? { ...localChart, internalLevel }
+                : this.synthesizeChart(chart, song, internalLevel),
             combo,
             sync: SyncLamp.NONE,
             achievement: score.scoreData.percent,

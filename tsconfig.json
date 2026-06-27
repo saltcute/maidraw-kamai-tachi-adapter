@@ -12,6 +12,7 @@
             "@common/*": [ "./src/common/*" ],
             "@maimai/*": [ "./src/maimai/*" ],
             "@chunithm/*": [ "./src/chunithm/*" ],
+            "@ongeki/*": [ "./src/ongeki/*" ],
         },
         "rootDirs": [
             "src"

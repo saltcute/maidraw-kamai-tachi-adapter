@@ -1,3 +1,9 @@
+import type { ApiResponse } from "@common/response";
+import {
+    camelizeResponse,
+    sanitizeKamaitachiErrorMessage,
+    truncateNumber,
+} from "@common/util";
 import { Difficulty } from "gcm-database/ongeki";
 import type {
     Database,
@@ -17,12 +23,6 @@ import {
     type OngekiScoreAdapter,
 } from "maidraw/ongeki";
 import { ONGEKIRating } from "rg-stats";
-import type { ApiResponse } from "../common/response";
-import {
-    camelizeResponse,
-    sanitizeKamaitachiErrorMessage,
-    truncateNumber,
-} from "../common/util";
 import type { Chart } from "./types/chart";
 import { PLATINUM_STAR_MAP } from "./types/platinumStarMap";
 import type { Pb, Score } from "./types/score";
@@ -234,8 +234,9 @@ export class KamaiTachiScoreAdapter
               )
             : 0;
         return {
-            chart:
-                localChart ?? this.synthesizeChart(chart, song, internalLevel),
+            chart: localChart
+                ? { ...localChart, internalLevel }
+                : this.synthesizeChart(chart, song, internalLevel),
             combo,
             bell,
             score: source.scoreData.score,

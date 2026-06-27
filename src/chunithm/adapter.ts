@@ -1,3 +1,5 @@
+import type { ApiResponse } from "@common/response";
+import { camelizeResponse, sanitizeKamaitachiErrorMessage } from "@common/util";
 import { Difficulty } from "gcm-database/chunithm";
 import type {
     Database,
@@ -18,11 +20,6 @@ import {
     ComboLamp,
 } from "maidraw/chunithm";
 import { CHUNITHMRating } from "rg-stats";
-import type { ApiResponse } from "../common/response";
-import {
-    camelizeResponse,
-    sanitizeKamaitachiErrorMessage,
-} from "../common/util";
 import { calculateParadiseLostRating } from "./lib/calculateParadiseLostRating";
 import type { Chart } from "./types/chart";
 import type { Pb, Score } from "./types/score";
@@ -327,8 +324,9 @@ export class KamaiTachiScoreAdapter
                       source.scoreData.score,
                   );
         return {
-            chart:
-                localChart ?? this.synthesizeChart(chart, song, internalLevel),
+            chart: localChart
+                ? { ...localChart, internalLevel }
+                : this.synthesizeChart(chart, song, internalLevel),
             combo,
             chain: ChainLamp.NONE,
             clear,
