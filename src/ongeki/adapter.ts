@@ -340,12 +340,16 @@ export class KamaiTachiScoreAdapter
                 ),
             };
         }
-        const entries = await this.enrich(
-            rawPbs.body.pbs,
-            rawPbs.body.charts,
-            rawPbs.body.songs,
-            "refresh",
-            { dropZeroLevel: true },
+        const entries = (
+            await this.enrich(
+                rawPbs.body.pbs,
+                rawPbs.body.charts,
+                rawPbs.body.songs,
+                "refresh",
+                { dropZeroLevel: true },
+            )
+        ).filter(
+            (v) => !v.localChart || !/^7\d{3,}/.test(v.localChart.identifier),
         );
         const newScores = entries.filter(
             (e) => e.chart.data.displayVersion === currentVersion,
@@ -421,18 +425,26 @@ export class KamaiTachiScoreAdapter
                 ),
             };
         }
-        const pbs = await this.enrich(
-            rawPbs.body.pbs,
-            rawPbs.body.charts,
-            rawPbs.body.songs,
-            "classic",
-            { dropZeroLevel: true },
+        const pbs = (
+            await this.enrich(
+                rawPbs.body.pbs,
+                rawPbs.body.charts,
+                rawPbs.body.songs,
+                "classic",
+                { dropZeroLevel: true },
+            )
+        ).filter(
+            (v) => !v.localChart || !/^7\d{3,}/.test(v.localChart.identifier),
         );
-        const recents = await this.enrich(
-            rawRecents.body.scores,
-            rawRecents.body.charts,
-            rawRecents.body.songs,
-            "classic",
+        const recents = (
+            await this.enrich(
+                rawRecents.body.scores,
+                rawRecents.body.charts,
+                rawRecents.body.songs,
+                "classic",
+            )
+        ).filter(
+            (v) => !v.localChart || !/^7\d{3,}/.test(v.localChart.identifier),
         );
         const newScores = pbs.filter(
             (e) => e.chart.data.displayVersion === currentVersion,
