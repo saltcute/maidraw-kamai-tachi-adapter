@@ -151,6 +151,10 @@ export class KamaiTachiScoreAdapter
                 return GameVersions.CHUNITHM_VERSE;
             case "CHUNITHM X-VERSE":
                 return GameVersions.CHUNITHM_XVERSE;
+            case "CHUNITHM X-VERSE-X":
+                return GameVersions.CHUNITHM_XVERSEX;
+            case "CHUNITHM Mate":
+                return GameVersions.CHUNITHM_MATE;
             default:
                 return null;
         }
