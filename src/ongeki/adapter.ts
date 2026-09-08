@@ -309,7 +309,13 @@ export class KamaiTachiScoreAdapter
                 rawPbs.body.songs,
                 "refresh",
             )
-        ).filter((e) => String(e.chart.data.inGameId) === chartIdentifier);
+        ).filter(
+            (e) =>
+                String(e.chart.data.inGameId) === chartIdentifier ||
+                // Re:Master uses a separate in-game ID from the base song.
+                e.localChart?.optionalData.remaster
+                    ?.baseDifficultyIdentifier === chartIdentifier,
+        );
         const result = Object.values(Difficulty).reduce(
             (acc, difficulty) => {
                 acc[difficulty] = null;
