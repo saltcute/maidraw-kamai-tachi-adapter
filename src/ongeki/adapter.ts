@@ -233,10 +233,22 @@ export class KamaiTachiScoreAdapter
                   PLATINUM_STAR_MAP[source.scoreData.platinumStars],
               )
             : 0;
+        const scoreChart = localChart
+            ? { ...localChart, internalLevel }
+            : this.synthesizeChart(chart, song, internalLevel);
+        if (
+            Number.isFinite(chart.data.maxPlatScore) &&
+            chart.data.maxPlatScore > 0
+        ) {
+            // Local and synthesized charts may lack note counts.
+            const optionalData = {
+                ...scoreChart.optionalData,
+                totalNotes: chart.data.maxPlatScore / 2,
+            };
+            scoreChart.optionalData = optionalData;
+        }
         return {
-            chart: localChart
-                ? { ...localChart, internalLevel }
-                : this.synthesizeChart(chart, song, internalLevel),
+            chart: scoreChart,
             combo,
             bell,
             score: source.scoreData.score,
