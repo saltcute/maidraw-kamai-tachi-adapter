@@ -757,4 +757,7 @@ export class KamaiTachiScoreAdapter
     public xversex() {
         return this.withVersion(GameVersions.CHUNITHM_XVERSEX);
     }
+    public mate() {
+        return this.withVersion(GameVersions.CHUNITHM_MATE);
+    }
 }
