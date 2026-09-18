@@ -1,5 +1,11 @@
 /** biome-ignore-all lint/style/useNamingConvention: enum naming */
 export const GameVersions = {
+    MAGICAL: {
+        kamai: "maimaiでらっくす MAGiCAL",
+        DX: "maimai でらっくす MAGiCAL",
+        EX: "maimai DX MAGiCAL",
+        CN: "",
+    },
     CIRCLE_PLUS: {
         kamai: "maimaiでらっくす CiRCLE PLUS",
         DX: "maimai でらっくす CiRCLE PLUS",

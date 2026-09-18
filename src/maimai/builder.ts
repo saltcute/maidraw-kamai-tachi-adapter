@@ -100,6 +100,9 @@ export class KamaiTachiBuilder {
     public circlePlus(region?: Region) {
         return this.build(GameVersions.CIRCLE_PLUS, region);
     }
+    public magical(region?: Region) {
+        return this.build(GameVersions.MAGICAL, region);
+    }
     public chinese() {
         const build = this.build.bind(this);
         return {

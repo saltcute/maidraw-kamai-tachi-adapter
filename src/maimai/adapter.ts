@@ -53,7 +53,7 @@ export class KamaiTachiScoreAdapter
     constructor({
         database,
         baseUrl = "https://kamai.tachi.ac",
-        version = Versions.PRISM_PLUS,
+        version = Versions.MAGICAL,
         region = "DX",
     }: {
         database: Database;
