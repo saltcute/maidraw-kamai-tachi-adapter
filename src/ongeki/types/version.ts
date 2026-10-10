@@ -1,5 +1,6 @@
 export enum GameVersions {
-    REFRESH = "オンゲキ Re:Fresh",
+    REFRESH_ACT_2 = "オンゲキ Re:Fresh Act.2",
+    REFRESH_ACT_1 = "オンゲキ Re:Fresh Act.1",
     BRIGHT_MEMORY_ACT_3 = "オンゲキ bright MEMORY Act.3",
     BRIGHT_MEMORY_ACT_2 = "オンゲキ bright MEMORY Act.2",
     BRIGHT_MEMORY_ACT_1 = "オンゲキ bright MEMORY Act.1",

@@ -48,7 +48,7 @@ export class KamaiTachiScoreAdapter
     constructor({
         database,
         baseUrl = "https://kamai.tachi.ac",
-        currentVersion = GameVersions.REFRESH,
+        currentVersion = GameVersions.REFRESH_ACT_1,
     }: {
         database: Database;
         baseUrl?: string;
@@ -675,7 +675,16 @@ export class KamaiTachiScoreAdapter
     public brightMemoryAct3() {
         return this.withVersion(GameVersions.BRIGHT_MEMORY_ACT_3);
     }
+    /**
+     * @deprecated Use `refreshAct1()`
+     */
     public refresh() {
-        return this.withVersion(GameVersions.REFRESH);
+        return this.refreshAct1();
+    }
+    public refreshAct1() {
+        return this.withVersion(GameVersions.REFRESH_ACT_1);
+    }
+    public refreshAct2() {
+        return this.withVersion(GameVersions.REFRESH_ACT_2);
     }
 }
